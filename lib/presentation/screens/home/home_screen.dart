@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:widgets_app/config/theme/menu/menu/menu_item.dart';
+import 'package:widgets_app/presentation/screens/cards/cards_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const String name = 'home_screen';
+
   const HomeScreen({super.key});
 
   @override
@@ -47,16 +50,25 @@ class _CustomListTile extends StatelessWidget {
       trailing: Icon(Icons.arrow_forward_ios_rounded, color: colors.primary),
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subTitle),
-      onTap: () {   
-
+      onTap: () {
+  
+        //> LLAMDAS PROPIAS DE Flutter
         // Navigator.of(context).push(
         //   MaterialPageRoute(builder: (context) => const ButtonsScreen()),
         // );
 
         //Navigator.pushNamed(context, menuItem.link);
 
+        //> LLAMDAS PROPIAS DE GoRouter
+        //> Para el caso de que quiera llamarlo a traves del link
         context.push(menuItem.link);
 
+        //> Para el caso de que quiera llamarlo a traves del nombre
+        //> en este caso no importa si toco Botones o Tarjetas siempre se llama a CardsScreen.name
+        //> para poder ir a cada uno tendria que tener el nombre en la definicion de menu_item.dart
+        //> y no queremos agregar mas campos
+        //context.pushNamed( CardsScreen.name );
+        
       },
     );
   }
