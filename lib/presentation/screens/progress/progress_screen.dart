@@ -9,9 +9,9 @@ class ProgressScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Progress Indicator'),
+        title: const Text('Progress Indicator'),
       ),
-      body: _ProgressView(),
+      body: const _ProgressView(),
     );
   }
 }
@@ -32,9 +32,6 @@ class _ProgressView extends StatelessWidget {
           Text('Circular y linear controlado'),
           SizedBox(height: 10),
           _ControlledProgressIndicator()
-
-
-
         ],
       ),
     );
@@ -50,7 +47,6 @@ class _ControlledProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: Stream.periodic(const Duration(milliseconds: 300), (value) {
-        print('Value progressbar: ${value*2}');
         return (value*2) / 100;
       }).takeWhile((value) => value<=1),
       builder: (context, snapshot) {
