@@ -12,6 +12,8 @@ const colorList = <Color>[
   Colors.pinkAccent,
 ];
 
+
+//> Clase de la que se crea la instancia del tema de la aplicacion con la configuracion de mismo
 class AppTheme {
   final int selectedColor;
   final bool isDarkMode;
@@ -29,5 +31,10 @@ class AppTheme {
         appBarTheme: const AppBarTheme(
           centerTitle: false,
         ),
+      );
+
+  AppTheme copyWith({int? selectedColor, bool? isDarkMode}) => AppTheme(
+        selectedColor: selectedColor ?? this.selectedColor,
+        isDarkMode: isDarkMode ?? this.isDarkMode,
       );
 }
